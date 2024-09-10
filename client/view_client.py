@@ -1,10 +1,10 @@
 import json
-import customtkinter as cst
+import customtkinter as ctk
 from CTkMessagebox import CTkMessagebox
 from pynput.mouse import Controller
 
 
-class ViewClient(cst.CTkToplevel):
+class ViewClient(ctk.CTkToplevel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         mouse = Controller()
@@ -18,23 +18,23 @@ class ViewClient(cst.CTkToplevel):
         self.font_2 = ('Consolas', 15, 'bold')
         self.font_3 = ('Consolas', 17, 'bold')
 
-        self.en_name = cst.CTkEntry(self, width=200, height=35, placeholder_text="Фамилия", justify=cst.CENTER,
+        self.en_name = ctk.CTkEntry(self, width=200, height=35, placeholder_text="Фамилия", justify=ctk.CENTER,
                                     font=self.font_3)
         self.en_name.place(x=5, y=10)
 
-        self.en_phone = cst.CTkEntry(self, width=200, height=35, placeholder_text="Телефон", justify=cst.CENTER,
+        self.en_phone = ctk.CTkEntry(self, width=200, height=35, placeholder_text="Телефон", justify=ctk.CENTER,
                                      font=self.font_3)
         self.en_phone.place(x=210, y=10)
 
-        self.en_discount = cst.CTkEntry(self, width=75, height=35, placeholder_text="Скидка", justify=cst.CENTER,
+        self.en_discount = ctk.CTkEntry(self, width=75, height=35, placeholder_text="Скидка", justify=ctk.CENTER,
                                         font=self.font_3)
         self.en_discount.place(x=415, y=10)
 
-        self.bt_enter = cst.CTkButton(self, text="Добавить", width=240, height=60, font=self.font_1,
+        self.bt_enter = ctk.CTkButton(self, text="Добавить", width=240, height=60, font=self.font_1,
                                       command=self.enter)
         self.bt_enter.place(x=5, y=60)
 
-        self.bt_cancel = cst.CTkButton(self, text="Отмена", width=240, height=60, font=self.font_1, fg_color="#778899",
+        self.bt_cancel = ctk.CTkButton(self, text="Отмена", width=240, height=60, font=self.font_1, fg_color="#778899",
                                        hover_color="#A9A9A9", command=self.cancel)
         self.bt_cancel.place(x=250, y=60)
 
@@ -52,7 +52,7 @@ class ViewClient(cst.CTkToplevel):
             phone = self.en_phone.get() if self.en_phone.get() not in "" else "8(918)-000-00-00"
             discount = int(self.en_discount.get()) if self.en_discount.get() not in "" else 0
             self.write_json(self.user_add(name, phone, discount), "data/user.json")
-            self.en_name.delete(0, cst.END)
+            self.en_name.delete(0, ctk.END)
             self.bt_enter.focus_set()
 
     def write_json(self, data, file_name):
