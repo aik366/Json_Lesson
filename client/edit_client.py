@@ -2,7 +2,7 @@ import json
 import customtkinter as ctk
 from CTkMessagebox import CTkMessagebox
 from pynput.mouse import Controller
-from client_func import check_client
+from client.client_func import check_client
 
 
 class EditClient(ctk.CTkToplevel):
